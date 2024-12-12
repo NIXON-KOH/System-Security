@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="document">
+        <p id="msg">{{ code }}</p>
+        <form action="/financeq" method="post" >
+            <label for="honey">Enter Code To View Finances </label>
+            <br>
+            <input type="text" name="honey" id='honey' value="{{ code }}">
+            <br><br>
+            <input type="submit">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        </form>
+        <p>{{ msg }}</p>
+    </div>
+</body>
+<style>
+.document {
+    margin-top:10%;
+    width:30%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: wheat;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.document input{
+    border:none;
+    text-align: center;
+}
+
+#msg { 
+    font-size: 200%;
+    font-weight: bolder;
+}
+</style>
+</html>

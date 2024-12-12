@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+<style>
+    .form-container {
+        border: 1px solid #000;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .form-container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .form-container td {
+        padding: 10px;
+    }
+
+    .form-container label {
+        display: block;
+        font-weight: bold;
+    }
+
+    .form-container textarea {
+        width: 100%;
+        resize: none;
+    }
+
+    .form-container input,
+    .form-container select,
+    .form-container textarea {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .btn-container {
+        text-align: right;
+        padding-top: 30px;
+    }
+    
+    .btn-container button{
+        width: 200px;
+        height: 100px;
+        border-radius: 8px;
+        font-size: 20px;
+    }
+
+</style>
+{% block content %}
+<div class="container">
+    <div class="form-container">
+        <h2>Enter room details below</h2>
+        <form action="/addroom" method="post">
+            <table>
+                <tr>
+                    <td><label for="name">Room Name</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="description">Room Description</label></td>
+                    <td><textarea id="description" name="description" rows="4"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="availability">Availability</label></td>
+                    <td>
+                        <input type="checkbox" id="availability" name="availability" value="yes">
+                        <label for="availability">Yes</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="max_occupancy">Max Occupancy</label></td>
+                    <td><input type="number" id="max_occupancy" name="max_occupancy"></td>
+                </tr>
+                <tr>
+                    <td><label for="cost">Price</label></td>
+                    <td><input type="text" id="cost" name="cost"></td>
+                </tr>
+                <tr>
+                    <td><label for="smoking">Smoking Room</label></td>
+                    <td>
+                        <input type="checkbox" id="smoking" name="smoking" value="yes">
+                        <label for="smoking">Yes</label>
+                    </td>
+                </tr>
+            </table>
+            <div class="btn-container">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="btn btn-primary" style="padding:20px;">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

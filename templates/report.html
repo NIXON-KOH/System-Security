@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+<title>Report</title>
+<style>
+.changethis {
+    grid-column: 1 / -1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.instructions {
+    max-width: 50%;
+}
+
+.instructions h2 {
+    margin-bottom: 10px;
+}
+
+.instructions ol {
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.instructions form {
+    display: flex;
+    align-items: center;
+}
+
+.instructions label {
+    margin-right: 10px;
+}
+
+.pdf-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.pdf-preview img {
+    max-width: 100%;
+    max-height: 100%;
+}
+</style>
+{% block content %}
+    <div class="instructions">
+        <h2>Upload Report</h2>
+    </div>
+    <h1>{{ status }}</h1>
+    <button><a href="{{ permalink }}" target="_blank">View Details</a></button>
+
+    <div class="pdf-preview">
+        <img src="/static/uploads/{{ imgpth }}" alt="Preview will not show if file is malicious" id="pdf-preview">
+    </div>
+{% endblock %}
+

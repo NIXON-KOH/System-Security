@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Result</title>
+    <script>
+        function refreshPage() {
+            location.reload();
+        }
+    </script>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    {% if report_url %}
+        <a href="{{ report_url }}">View Report</a>
+        <button onclick="refreshPage()">Refresh</button>
+    {% endif %}
+</body>
+
+{% endblock %}

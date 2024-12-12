@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile Page</title>
+        <style>
+            h2 {
+
+                color: #333;
+            }
+            .profile-container {
+                max-width: 600px;
+                padding: 20px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+            .profile-container p {
+                margin: 10px 0;
+                color: #555;
+            }
+            .profile-container img {
+                display: block;
+                max-width: 100px;
+                border-radius: 50%;
+            }
+            .profile-container form {
+                margin-bottom: 20px;
+            }
+            .profile-container input[type="file"] {
+                display: block;
+            }
+            .profile-container input[type="submit"] {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                border-radius: 4px;
+                margin-top: 10px;
+            }
+            .profile-container input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+            hr {
+                border: 0;
+                border-top: 1px solid #ddd;
+                margin: 20px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="profile-container">
+            <h2>Profile Page</h2>
+            <div>
+                <p>Account Details</p>
+                <hr>
+                <img src="{{ img }}" alt="Profile Image" id="image">
+                <p>Update Image</p>
+                <form method="POST" action="/upload" enctype="multipart/form-data">
+                    <input type="file" name="file" accept=".png, .jpg, .jpeg">
+                    <input type="submit" value="Upload">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                </form>
+                <form method="POST" action="/maliciousupload">
+                    <input type="submit" value="Malicious Upload">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                </form>
+                <p>Username: {{ username }}</p>
+                <p>Email: {{ email }}</p>
+            </div>
+        </div>
+    </body>
+{% endblock %}

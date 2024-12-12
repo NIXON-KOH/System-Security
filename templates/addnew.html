@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="form-container">
+    <div class="form-group">
+        <h3>Enter details below</h3>
+        <label for="account-id">Account ID:</label>
+        <input type="text" id="account-id" name="account-id">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <button class="button">Register</button>
+    </div>
+    <div class="preview-container">
+        <div class="pdf-preview">
+            <img src="penguin.png" alt="Display a preview image of the jpg" id="pdf-preview">
+        </div>
+        <form>
+            <label for="jpg-upload">Upload jpg:</label>
+            <input type="file" id="jpg-upload" accept="image/jpeg">
+            <button type="button" onclick="uploadJPG()">Upload</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+    <script>
+        function uploadJPG() {
+            const input = document.getElementById('jpg-upload');
+            const preview = document.getElementById('pdf-preview');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+<style>
+.changethis {
+    grid-column: 1 / -1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group button {
+    align-self: flex-start;
+}
+
+.preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.pdf-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.pdf-preview img {
+    max-width: 100%;
+    max-height: 100%;
+}

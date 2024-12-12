@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+<title>Logging</title>
+<style>
+.log-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.log-container p {
+    text-align: center;
+    margin-top: 40px;
+    color: #555;
+}
+
+.log-row {
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-row:first-child {
+    border-top: none;
+}
+</style>
+{% block content %}
+<h3>View Account Logging</h3>
+<div class="log-container">
+    <div class="log-row">
+        <p>Insert the log here, this log is for the employee's side (which employee account do what, upload photo, login, login failed etc)</p>
+    </div>
+    <div class="log-row">
+        <p>Test log 1</p>
+    </div>
+    <div class="log-row">
+        <p>Test log 2</p>
+    </div>
+    <div class="log-row">
+        <p>Test log 3</p>
+    </div>
+</div>
+{% endblock %}

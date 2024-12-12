@@ -1,0 +1,127 @@
+
+<body>
+    <div class="login-main-container">
+        <div class="login-container">
+            <h2 id="login-h2">Login</h2>
+            <hr id="login-hr">
+            <form action="{{ url_for('login') }}" method="post">
+
+                <label class="login-label" for="username"><i class="fas fa-user"></i>Username</label>
+                <input class="login-input" type="text" name="username" placeholder="Username" id="username"
+                required>
+                <label class="login-label" for="password">
+                <i class="fas fa-lock"></i>Password</label>
+                <input class="login-input" type="password" name="password" placeholder="Password" id="password" required>
+                <div class="recaptcha">
+                    {{ form.recaptcha }}
+                </div>
+                <div class="msg">{{ msg }}</div>
+                <br>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input id="login-button" type="submit" value="Login">
+            </form>
+            <hr>
+            <div class="googlelogin">
+                <a id="googlelogin-a" href="{{ url_for('googlelogin') }}"><svg xmlns="http://www.w3.org/2000/svg" width="0.98em" height="1em" viewBox="0 0 256 262"><path fill="#4285f4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622l38.755 30.023l2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"/><path fill="#34a853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055c-34.523 0-63.824-22.773-74.269-54.25l-1.531.13l-40.298 31.187l-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"/><path fill="#fbbc05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82c0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602z"/><path fill="#eb4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0C79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"/></svg>  Login With Google</a>
+            </div>
+        </div>
+    </div>
+        
+
+</body>
+
+<style>
+.login-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width:100%;
+}
+
+body{
+    background-image: url("/static/hotel.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-container {
+    width: 400px;
+    padding: 20px;
+    background-color: rgb(240, 216, 152);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#login-h2 {
+    text-align: center;
+}
+
+#login-h2, #login-hr {
+    margin-bottom: 20px;
+}
+
+#login-hr {
+    border: 0;
+    height: 1px;
+    background: black;
+}
+
+.login-label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border:none;
+    border-radius: 10px;
+}
+
+.recaptcha {
+    width:100%;
+    text-align:center;
+}
+
+#login-button {
+    width: 100%;
+    padding: 10px;
+    background-color:  rgb(196, 219, 162);
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.googlelogin {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.googlelogin > #googlelogin-a {
+    text-decoration: none;
+    color:black;
+    background-color:white;
+    border:1px solid black;
+    padding:10px;
+    margin-top:1%;
+    border-radius:10px;
+}
+
+.googlelogin > #googlelogin-a:hover {
+    background-color: lightgray;
+}
+
+.googlelogin > svg {
+    padding-right:5px;
+}
+
+.msg {
+    color:red;
+    font-weight:bold;
+}
+</style>

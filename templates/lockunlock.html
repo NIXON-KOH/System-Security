@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+<title>Accounts</title>
+<style>
+.log-entry {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.log-container p {
+    text-align: center;
+    margin-top: 40px;
+    color: #555;
+}
+
+.log-row {
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-row:first-child {
+    border-top: none;
+}
+
+.log-row .lock-icon {
+    cursor: pointer;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.lock-icon.locked {
+    background-color: var(--danger-color);
+    -webkit-user-select: none;
+    user-select: none;
+    border: 2px solid black;
+}
+
+.lock-icon.unlocked {
+    background-color: var(--tertiary-color);
+    -webkit-user-select: none;
+    user-select: none;
+    border: 2px solid black;
+}
+</style>
+<!-- CHANGE THIS -->
+{% block content %}
+<h2>View Accounts</h2>
+<hr>
+<div class="log-container">
+    {% for i in account %}
+        <div class="log-row">
+            <span>{{ i[1] }}</span>
+            <form action="/accounts" method="post">
+                {% if i[-2] == 0 %}
+                    <button type="submit"><i class="lock-icon locked">🔒</i></button>
+                {% else %}
+                    <button type="submit"><i class="lock-icon unlocked">🔓</i></button>
+                {% endif %}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input style="visibility: hidden;" name="user" value="{{ i[0] }}">
+            </form>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
